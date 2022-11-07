@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Цены{% endblock %}
+
+{% block body %}
+<div class="pricing-header p-3 pb-md-4 mx-auto text-center" xmlns="http://www.w3.org/1999/html">
+    <h1 class="display-4 fw-normal">Цены</h1>
+    <p class="fs-5 text-muted">Наш ассортимент</p>
+</div>
+<hr>
+<div class="row">
+{% for d in data %}
+     <div class="col-md-4">
+        <div class="card">
+         <div class="card-body">
+            <main>
+                <div class="card mb-4 rounded-3 shadow-sm border-primary">
+                    <div class="card-header py-3 text-bg-primary border-primary">
+                        <h4 class="my-0 fw-normal">{{ d.title }}</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title">{{d.price}} руб.<small class="text-muted fw-light">/{{ d.unit }}</small></h1>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <li>{{ d.description }}</li>
+                            <li>Доступное количество: {{ d.amount }}</li>
+                        </ul>
+                        <a href="/buy/{{ d.id }}" class="btn btn-lg btn-block btn-outline-primary">Купить</a>
+                    </div>
+                </div>
+            </main>
+         </div>
+        </div>
+    </div>
+{% endfor %}
+</div>
+{% endblock %}
